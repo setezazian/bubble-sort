@@ -1,14 +1,21 @@
 /* jshint expr:true */
+const isSorted = (array) => {
+  for (let i = 0; i < array.length - 1; i += 1) {
+    if (array[i] > array[i + 1]) {
+      return false;
+    }
+  }
+  return true;
+};
 
-// Feel free to add helper functions if needed.
 const bubbleSort = (input) => {
   const array = input;
-  for (let i = 0; i < array.length; i += 1) {
-    for (let j = i + 1; j < array.length; j += 1) {
-      if (array[i] > array[j]) {
+  while (!isSorted(array)) {
+    for (let i = 0; i < array.length; i += 1) {
+      if (array[i] > array[i + 1]) {
         const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        array[i] = array[i + 1];
+        array[i + 1] = temp;
       }
     }
   }
